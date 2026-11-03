@@ -10,7 +10,7 @@
 # Đăng nhập bằng email + mật khẩu này sẽ có nút 👑 Quản trị. Mật khẩu từ 8 ký tự.
 # Để trống: hệ thống tự tạo admin@huy.local và in mật khẩu trong Render > Logs.
 ADMIN_EMAIL = "huymeomeoooo@gmail.com"
-ADMIN_PASSWORD = "anhhuy11@@123"
+ADMIN_PASSWORD = "anhhuy11"
 
 # --- 2) API KEY GEMINI -------------------------------------------
 # Có thể điền nhiều key. Key đầu bị lỗi/hết hạn mức thì tự chuyển sang key kế tiếp.
@@ -18,7 +18,7 @@ ADMIN_PASSWORD = "anhhuy11@@123"
 # >>> DÁN KEY GEMINI CỦA BẠN VÀO ĐÂY (mỗi key một dòng, trong dấu nháy, cách nhau dấu phẩy) <<<
 # Hoặc đăng nhập admin -> bấm ⚙ -> dán key vào ô "Key lưu trên máy chủ" (không cần sửa file).
 GEMINI_API_KEYS = [
-    #
+    
     #
     
 ]
