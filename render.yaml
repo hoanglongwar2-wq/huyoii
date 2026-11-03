@@ -1,0 +1,34 @@
+services:
+  - type: web
+    name: huy-ai
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn backend:app --workers 1 --threads 4 --timeout 600
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-3.8-flash
+      - key: GEMINI_IMAGE_MODEL
+        value: gemini-3.1-flash-image
+      # --- tài khoản ---
+      - key: SECRET_KEY          # Render tự sinh chuỗi ngẫu nhiên để ký phiên đăng nhập
+        generateValue: true
+      - key: GEMINI_API_KEYS      # (tùy chọn) nhiều key cách nhau dấu phẩy; key lỗi tự chuyển key kế tiếp
+        sync: false
+      - key: GOOGLE_CLIENT_ID     # (tùy chọn) đăng nhập Google
+        sync: false
+      - key: FACEBOOK_APP_ID      # (tùy chọn) đăng nhập Facebook
+        sync: false
+      - key: FACEBOOK_APP_SECRET
+        sync: false
+      - key: ADMIN_EMAIL         # email đăng nhập admin (của bạn), nhập trong Render > Environment
+        sync: false
+      - key: ADMIN_PASSWORD      # mật khẩu admin (>= 8 ký tự), nhập trong Render > Environment
+        sync: false
+      # Dữ liệu (tài khoản, chat, file) mặc định lưu ở ./data/huy_ai.db (đĩa tạm của gói Free, mất khi khởi động lại).
+      # Muốn giữ lâu dài: gắn Disk (gói trả phí) tại /var/data rồi thêm biến DB_PATH=/var/data/huy_ai.db
